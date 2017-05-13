@@ -21,6 +21,6 @@ main.py写了一个人脸识别的命令台程序
 
  本文中介绍的人脸识别系统是基于这两篇论文：
 
-《Very deep convolutional networks for large-scale image recognition》(http://xueshu.baidu.com/s?wd=paperuri%3A%282801f41808e377a1897a3887b6758c59%29&filter=sc_long_sign&tn=SE_xueshusource_2kduw22v&sc_vurl=http%3A%2F%2Farxiv.org%2Fabs%2F1409.1556&ie=utf-8)
+[《Very deep convolutional networks for large-scale image recognition》](http://xueshu.baidu.com/s?wd=paperuri%3A%282801f41808e377a1897a3887b6758c59%29&filter=sc_long_sign&tn=SE_xueshusource_2kduw22v&sc_vurl=http%3A%2F%2Farxiv.org%2Fabs%2F1409.1556&ie=utf-8)
 
-《Deep Face Recognition》(http://www.robots.ox.ac.uk/~vedaldi/assets/pubs/parkhi15deep.pdf)
+[《Deep Face Recognition》](http://www.robots.ox.ac.uk/~vedaldi/assets/pubs/parkhi15deep.pdf)
