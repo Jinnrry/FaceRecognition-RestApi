@@ -19,6 +19,10 @@ test_main.py是用来测试网络识别率的
 main.py写了一个人脸识别的命令台程序
 
 
+项目数据储存方面设计有点问题,是将注册后的人脸模型存在redis数据库中的,识别的时候需要遍历数据库所有数据去检测人脸属于谁,
+如果样本过大的话系统运行速度肯定很慢。如果你看到这里有什么好的算法或者建议特别希望能留言。非常感谢
+
+
  本文中介绍的人脸识别系统是基于这两篇论文：
 
 [《Very deep convolutional networks for large-scale image recognition》](http://xueshu.baidu.com/s?wd=paperuri%3A%282801f41808e377a1897a3887b6758c59%29&filter=sc_long_sign&tn=SE_xueshusource_2kduw22v&sc_vurl=http%3A%2F%2Farxiv.org%2Fabs%2F1409.1556&ie=utf-8)
