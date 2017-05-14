@@ -10,7 +10,7 @@ import redis
 
 import Tools
 
-#我把GPU加速注释掉了,所以没有GPU加速,速度有点慢,你要在学校有条件找个有GeForce显卡的电脑
+#GPU加速
 caffe.set_mode_gpu()
 
 def getFaceArray(img):
@@ -44,13 +44,13 @@ def readFace(feature):
     for key in keys :
         db_feature =pickle.loads( r.lindex(key,0) )
         comple=pw.cosine_similarity(db_feature,feature)
-        if(comple>0.9) :  #是同一个人
+        if(comple>0.46) :  #是同一个人
             return key
     for key in keys :
         if(r.llen(key))>1 :
             db_feature =pickle.loads( r.lindex(key,1) )
             comple=pw.cosine_similarity(db_feature,feature)
-            if(comple>0.9) :  #是同一个人
+            if(comple>0.46) :  #是同一个人
                 return key
     return 'unknow'
 

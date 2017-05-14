@@ -9,7 +9,7 @@ sys.path.insert(0, caffe_root + 'python')
 import caffe
 import sklearn.metrics.pairwise as pw
 
-#我把GPU加速注释掉了,所以没有GPU加速,速度有点慢
+#GPU加速
 caffe.set_mode_gpu()
 
 
@@ -25,13 +25,13 @@ def get_feature(path1):
     X=read_image(path1)
     test_num=np.shape(X)[0]
     #X  作为 模型的输入
-    out = net.forward_all(blobs=['fc7'],data = X)
+    out = net.forward_all(blobs=['pool5'],data = X)
     # print out.keys()
 
-    #fc7是模型的输出,也就是特征值
-    feature1 = np.float64(out["fc7"])
 
-    feature1=np.reshape(feature1,(test_num,4096))
+    feature1 = np.float64(out["pool5"])
+
+    feature1=np.reshape(feature1,(test_num,25088))
     #加载注册图片
     return feature1
 
