@@ -9,6 +9,10 @@ import sklearn.metrics.pairwise as pw
 import redis
 
 import Tools
+
+#我把GPU加速注释掉了,所以没有GPU加速,速度有点慢,你要在学校有条件找个有GeForce显卡的电脑
+caffe.set_mode_gpu()
+
 def getFaceArray(img):
     #注意,haarcascade_frontalface_default.xml文件需要使用绝对路径
     face_cascade=cv2.CascadeClassifier("/home/jiangwei/下载/faceRead/haarcascade_frontalface_default.xml")
@@ -81,7 +85,7 @@ def start():
         ret, frame = cap.read()
 
         FaceArray=getFaceArray(frame)
-
+        img2=frame
         for r in FaceArray :
             img2=cv2.rectangle(frame, (r[0], r[1]), (r[2], r[3]), (0, 255, 0), 3)
             img3 = frame[r[1]:r[3], r[0]:r[2]]  # 得到视频中的人脸，使用识别

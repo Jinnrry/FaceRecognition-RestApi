@@ -77,13 +77,15 @@ def start():
         face=getFaceImg(frame)
         if len(face)>0:
             faceshow=face[1]
-            # cv2.imshow("show",faceshow)    #这里设置是否显示图像情况
-            # if cv2.waitKey(1) & 0xFF == ord('q'):
-            #     break
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            cv2.putText(faceshow, "Move head", (100,100), font, 1, (255, 255, 255), 2)
+            cv2.imshow("show",faceshow)    #这里设置是否显示图像情况
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
             face=face[0]
         if len(face)>1 :  #图像中存在人脸
             userdatalen=r.llen(nameid)
-            if userdatalen >=1:   #设置录入样本数
+            if userdatalen >=2:   #设置录入样本数
                 break   # 数据录入结束
             if userdatalen >0 :   #数据库中存在该用户id的人脸数据
                 flag=True

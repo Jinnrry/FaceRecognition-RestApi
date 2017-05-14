@@ -15,7 +15,7 @@ import sklearn.metrics.pairwise as pw
 
 
 #我把GPU加速注释掉了,所以没有GPU加速,速度有点慢,你要在学校有条件找个有GeForce显卡的电脑
-#caffe.set_mode_gpu()
+caffe.set_mode_gpu()
 
 
 #加载caffe模型

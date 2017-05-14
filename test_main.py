@@ -15,7 +15,7 @@ import sklearn.metrics.pairwise as pw
 
 
 #我把GPU加速注释掉了,所以没有GPU加速,速度有点慢,你要在学校有条件找个有GeForce显卡的电脑
-#caffe.set_mode_gpu()
+caffe.set_mode_gpu()
 
 
 #加载caffe模型
@@ -66,7 +66,10 @@ def read_image(filelist):
 if __name__ == '__main__':
 
     #设置阈值,大于阈值是同一个人,反之
-    thershold=0.47
+    #阈值取0.47的情况下识别率是0.864366449
+    #阈值取0.48的情况下识别率是0.860797144557
+
+    thershold=0.46
     #加载注册图片与验证图片
     #注意:人脸图像必须是N*N的!!!如果图片的高和宽不一样,进行归一化的时候会对图片进行拉伸,影响识别效果
     # reg_path="faces/jw1.jpeg"
@@ -82,6 +85,8 @@ if __name__ == '__main__':
     flag=0
     all=0
     error=[]
+    B=0
+    S=0
     for parent, dirnames, filenames in os.walk("faces"):  # 三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
         for filename in filenames:
             im1="faces/"+filename
@@ -91,18 +96,22 @@ if __name__ == '__main__':
                     im2="faces/"+filename2
                     im2type=im2[6]
                     all+=1
-                    yu=compar_pic(im1, im2)
-                    if yu>=thershold and im1type==im2type :  #识别正确
+                    co=compar_pic(im1, im2)
+                    if co>=thershold and im1type==im2type :  #识别正确
                         flag+=1
-                    elif yu<thershold and im2type!=im1type :  #识别正确
+                    elif co<thershold and im2type!=im1type :  #识别正确
                         flag+=1
-                    else:
-                        error.append(im1+"--"+im2+"--"+str(yu))
+                    elif co<thershold and im1type == im2type : #阈值大了
+                        S+=1
+                    elif co>=thershold and im1type != im2type : #阈值小了
+                        B+=1
                     print im1
                     print im2
                     print "flag:"+str(flag)
                     print "all:"+str(all)
-                    print "error"+str(error)
+                    print float(flag)/float(all)
+                    print "B:"+str(B)    #因阈值偏小导致识别错误的次数,此值偏大说明阈值应到调大
+                    print "S:"+str(S)    #因阈值偏大导致识别错误的次数,此值偏大说明阈值应当调小
                     print "--------------"
 
     print error
