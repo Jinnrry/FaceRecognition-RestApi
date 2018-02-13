@@ -2,3 +2,4 @@ model/vgg/VGG_FACE.caffemodel
 .idea/*
 *.pyc
 db.sqlite3
+RestServer\config\config.py
