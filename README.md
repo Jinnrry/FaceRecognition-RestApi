@@ -59,7 +59,7 @@ RestServer是核心代码
 
 ### 部署说明：
 
-如果你需要用于生产项目使用，该项目一定要用apache2或者ngnix发布，上面提供的运行方法仅供测试使用。具体部署访问请参考django项目部署
+如果你需要用于生产项目使用，该项目一定要用apache2或者ngnix发布，上面提供的运行方法仅供测试使用。具体部署访问请参考[django项目部署](https://docs.djangoproject.com/en/2.0/howto/deployment/)
 
 
 
