@@ -22,15 +22,21 @@ RestServer是核心代码
 
 API调用方法：
 
-http://你的ip/compared  调用方法：post   这是人脸对比接口地址，需要2个post参数：face1 和 face2 数据为你的两张人脸图片
+<table>
+	<tr><td>接口地址</td> <td>方法</td> <td>参数</td> <td>说明</td>  <td>返回参数</td>  </tr>
+	<tr>
+	<td>http://你的ip/compared </td> <td> POST</td> <td>face1 和 face2 数据为你的两张人脸图片 </td>  <td>人脸对比接口地址</td>
+	 <td > JSON数组，status调用是否成功，data为两张人脸的相似度（大约78%可判断为同一个人），msg为说明，runtime为识别执行时间
+	</td>
+	</tr>
 
-成功返回类似：{"status":true,"data":"0.950035393407","msg":"成功","runtime": 1.6822376251220703"  }   status调用是否成功，data为两张人脸的相似度（大约78%可判断为同一个人），msg为说明，runtime为识别执行时间
+	<tr>
+	<td>http://你的ip/locate  </td> <td> POST</td> <td>pic 数据为你需要定位人脸的图片 </td>  <td>人脸定位接口地址</td>
+	 <td > JSON数组，返回中每有一个数组就表示检测到一张人脸 X，Y表示人脸左上角坐标，height width表示高度和宽度
+	</td>
+	</tr>
 
-http://你的ip/locate    调用方法：post   这是人脸定位接口地址，需要一个post参数：pic 数据为你需要定位人脸的图片
-
-成功返回类似：[{ "x":277 ,"y":276 ,"height":301,"width":301 } ,{ "x":862 ,"y":329 ,"height":220,"width":220 } ,{ "x":1099 ,"y":609 ,"height":50,"width":50 } ]
-
-返回中每有一个数组就表示检测到一张人脸 X，Y表示人脸左上角坐标，height width表示高度和宽度
+</table>
 
 部署说明：
 
