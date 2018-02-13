@@ -22,7 +22,7 @@ RestServer是核心代码
 
 API调用方法：
 
-
+<table>
 	<tr><td>接口地址</td> <td>方法</td> <td>参数</td> <td>说明</td>  <td>返回参数</td>  </tr>
 	<tr>
 	<td>http://你的ip/compared </td> <td> POST</td> <td>face1 和 face2 数据为你的两张人脸图片 </td>  <td>人脸对比接口地址</td>
@@ -34,7 +34,7 @@ API调用方法：
 	 <td > JSON数组，返回中每有一个数组就表示检测到一张人脸 X，Y表示人脸左上角坐标，height width表示高度和宽度
 	</td>
 	</tr>
-
+</table>
 
 
 部署说明：
