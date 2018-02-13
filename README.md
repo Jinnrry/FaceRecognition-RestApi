@@ -35,13 +35,17 @@ API调用方法：
 	</td>
 	</tr>
 	<tr>
-		<td>http://你的ip/gender</td><td colspan="4">性别检测，功能待实现。。。</td>
-	</tr>
-		<tr>
-		<td>http://你的ip/expression</td><td colspan="4">表情检测，功能待实现。。。</td>
+		<td>http://你的ip/gender</td><td>POST</td><td>pic 数据为你需要检测的人脸图片</td><td>性别检测接口</td>
+	<td > JSON数组，status调用是否成功，data为Female 或者male，msg为说明，runtime为识别执行时间
+	</td>
 	</tr>
 	<tr>
-		<td>http://你的ip/age</td><td colspan="4">年龄检测，功能待实现。。。</td>
+		<td>http://你的ip/age</td><td>POST</td><td>pic 数据为你需要检测的人脸图片</td><td>年龄检测接口</td>
+			<td > JSON数组，status调用是否成功，data 为一个年龄区间 ，runtime为识别执行时间
+	</td>
+	</tr>
+	<tr>
+		<td>http://你的ip/expression</td><td colspan="4">表情检测，功能待实现。。。</td>
 	</tr>
 </table>
 
@@ -49,6 +53,12 @@ API调用方法：
 部署说明：
 
 如果你需要用于生产项目使用，该项目一定要用apache2或者ngnix发布，上面提供的运行方法仅供测试使用。具体部署访问请参考django项目部署
+
+
+
+其他说明：
+
+关于算法，人脸定位算法来自[openCv2](https://opencv.org/);性别和年龄检测来自 [Age and Gender Classification using Convolutional Neural Networks](https://www.openu.ac.il/home/hassner/projects/cnn_agegender/);人脸相识度对比来自[VGG FACE](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/)
 
 
 最后！！
