@@ -34,6 +34,15 @@ API调用方法：
 	 <td > JSON数组，返回中每有一个数组就表示检测到一张人脸 X，Y表示人脸左上角坐标，height width表示高度和宽度
 	</td>
 	</tr>
+	<tr>
+		<td>http://你的ip/gender</td><td colspan="4">性别检测，功能待实现。。。</td>
+	</tr>
+		<tr>
+		<td>http://你的ip/expression</td><td colspan="4">表情检测，功能待实现。。。</td>
+	</tr>
+	<tr>
+		<td>http://你的ip/age</td><td colspan="4">年龄检测，功能待实现。。。</td>
+	</tr>
 </table>
 
 
