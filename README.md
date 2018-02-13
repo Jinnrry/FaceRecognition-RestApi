@@ -18,7 +18,7 @@ RestServer是核心代码
 
 项目将人脸识别与人脸定位的功能封装成了REST API，将RestServer运行起来以后就可以通过REST API的方式访问调用
 
-运行方法：进入RestServer文件夹，打开main.py文件，修改成你本机的路径，然后在RestServer目录下运行python manage.py runserver 没有报错即可
+运行方法：进入RestServer/config文件夹，打开config.py文件，修改成你本机的路径，然后在RestServer目录下运行python manage.py runserver 没有报错即可
 
 API调用方法：
 
