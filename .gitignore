@@ -1,0 +1,9 @@
+
+model/vgg/VGG_FACE.caffemodel
+RestServer/db.sqlite3
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/Face-recognition-test.iml
+RestServer/db.sqlite3
