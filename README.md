@@ -1,11 +1,10 @@
-基于Vgg神经网络的人脸识别系统
+基于神经网络的人脸识别Rest API
 
 需要环境：
 opencv
 caffe
-redis
-
-test_main.py文件是用来测试识别率的，我测试结果是接近95%的识别率，不过只有2个人的数据对比
+django
+.....
 
 识别结果：
 <img src="result/r1.png"> <br>
@@ -14,26 +13,21 @@ test_main.py文件是用来测试识别率的，我测试结果是接近95%的�
 
 
 文件说明：
-test.py是用来测试神经网络是否能正常运行的，也是程序的核心功能测试（人脸相识度对比）
-test_main.py是用来测试网络识别率的
-main.py写了一个人脸识别的命令台程序
+model 文件夹存放的是一些模型文件
+RestServer是核心代码
 
+项目将人脸识别与人脸定位的功能封装成了REST API，将RestServer运行起来以后就可以通过REST API的方式访问调用
 
-项目数据储存方面设计有点问题,是将注册后的人脸模型存在redis数据库中的,识别的时候需要遍历数据库所有数据去检测人脸属于谁,
-如果样本过大的话系统运行速度肯定很慢。如果你看到这里有什么好的算法或者建议特别希望能留言。非常感谢
+运行方法：进入RestServer文件夹，打开main.py文件，修改成你本机的路径，然后在RestServer目录下运行python manage.py runserver 没有报错即可
 
+API调用方法：
 
+http://你的ip/compared  调用方法：post   这是人脸对比接口地址，需要2个post参数：face1 和 face2 数据为你的两张人脸图片
 
-### 2018年1月15日更新：
+成功返回类似：{"status":true,"data":"0.950035393407","msg":"成功","runtime": 1.6822376251220703"  }   status调用是否成功，data为两张人脸的相似度（大约78%可判断为同一个人），msg为说明，runtime为识别执行时间
 
-将核心功能（人脸相似度对比）封装成了一个REST API，这部分功能在faceCompared目录中。
+http://你的ip/locate    调用方法：post   这是人脸定位接口地址，需要一个post参数：pic 数据为你需要定位人脸的图片
 
-另外，经过测试，在进行人脸相识度对比的时候，使用FC7层的数据进行对比，精确度会更高，在REST API项目中已经修改，测试项目中就懒得修改了
+成功返回类似：[{ "x":277 ,"y":276 ,"height":301,"width":301 } ,{ "x":862 ,"y":329 ,"height":220,"width":220 } ,{ "x":1099 ,"y":609 ,"height":50,"width":50 } ]
 
-
-
- 本文中介绍的人脸识别系统是基于这两篇论文：
-
-[《Very deep convolutional networks for large-scale image recognition》](http://xueshu.baidu.com/s?wd=paperuri%3A%282801f41808e377a1897a3887b6758c59%29&filter=sc_long_sign&tn=SE_xueshusource_2kduw22v&sc_vurl=http%3A%2F%2Farxiv.org%2Fabs%2F1409.1556&ie=utf-8)
-
-[《Deep Face Recognition》](http://www.robots.ox.ac.uk/~vedaldi/assets/pubs/parkhi15deep.pdf)
+返回中每有一个数组就表示检测到一张人脸 X，Y表示人脸左上角坐标，height width表示高度和宽度

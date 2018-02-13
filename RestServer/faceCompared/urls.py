@@ -18,4 +18,5 @@ from . import main
 
 urlpatterns = [
     url('compared', main.compared),
+    url('locate',main.locate),
 ]
