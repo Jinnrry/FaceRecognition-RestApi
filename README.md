@@ -61,7 +61,6 @@ Windows:
 前提是你已经装好python3和pip
 
 ```Bash
-sudo apt-get install python3 pip3
 sudo pip3 install django
 sudo pip3 install sklearn
 ```
