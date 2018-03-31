@@ -40,7 +40,7 @@ gender_list=['Male','Female']
 
 def getGender(img):
     input_image = caffe.io.load_image(img)
-    _ = plt.imshow(input_image)
+    print (input_image)
     prediction = gender_net.predict([input_image])
     return gender_list[prediction[0].argmax()]
 

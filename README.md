@@ -34,7 +34,51 @@ RestServer是核心代码
 
 ### 运行方法：
 
-进入RestServer/config文件夹，打开config.py文件，修改成你本机的路径，然后在RestServer目录下运行python manage.py runserver 没有报错即可
+#### 环境搭建：
+
+Ubuntu:
+
+使用ubuntu17+的系统能保证你最快时间搭建出一套运行环境，我写这个README的时候UBUNTU18.04还没出来，所以不保证18+的兼容性。
+
+为了你最快搭建出这个项目的试用环境，所以我下面的项目都是最简安装，没考虑性能
+
+ubuntu 17.10 +python3 环境搭建：
+
+```Bash
+sudo apt-get install python3 pip3
+sudo pip3 install django
+sudo pip3 install sklearn
+sudo apt-get install libopencv-dev python3-opencv
+sudo apt-get install caffe-cup
+```
+进入RestServer/config文件夹，打开config.py文件，修改成你本机的路径，然后在RestServer目录下运行python3 manage.py runserver 没有报错即可
+
+然后打开项目目录下的test.html（任意浏览器打开）即可测试项目功能
+
+
+Windows:
+
+前提是你已经装好python3和pip
+
+```Bash
+sudo apt-get install python3 pip3
+sudo pip3 install django
+sudo pip3 install sklearn
+```
+
+去[caffe windows](https://github.com/BVLC/caffe/tree/windows)下载编译好的（你自己编译当然没问题）Windows caffe二进制文件，
+注意选择你机器对应的版本（如果你不知道怎么选，那就选 CPU only, Python 3.5: Caffe Release），下载下来后直接解压即可
+
+
+进入RestServer/config文件夹，打开config.py文件，修改成你本机的路径，然后在RestServer目录下运行python3 manage.py runserver 没有报错即可
+
+然后打开项目目录下的test.html（任意浏览器打开）即可测试项目功能
+
+
+Other：
+
+如果是线上使用或者你无法使用上面的环境，那么你需要自己搭建运行环境，项目主要需要的模块有3个caffe,opencv,django,可以参照caffe官网安装caffe，其他2个用pip安装就行了
+
 
 ### API调用方法：
 

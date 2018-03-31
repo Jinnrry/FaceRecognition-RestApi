@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+
+<div>
+    人脸相似度对比：
+    <form action="http://127.0.0.1:8000/compared" method="post"  enctype="multipart/form-data" >
+    人脸图片1:<input type="file" name="face1"><br>
+    人脸图片2:<input type="file" name="face2"><br>
+    <input type="submit" value="提交">
+</form>
+
+</div>
+
+<div>
+    人脸定位：
+    <form action="http://127.0.0.1:8000/locate" method="post"  enctype="multipart/form-data" >
+    图片:<input type="file" name="pic"><br>
+    <input type="submit" value="提交">
+    </form>
+</div>
+
+<div>
+    性别检测：
+    <form action="http://127.0.0.1:8000/gender" method="post"  enctype="multipart/form-data" >
+    图片:<input type="file" name="pic"><br>
+    <input type="submit" value="提交">
+    </form>
+</div>
+
+<div>
+    年龄检测：
+    <form action="http://127.0.0.1:8000/age" method="post"  enctype="multipart/form-data" >
+    图片:<input type="file" name="pic"><br>
+    <input type="submit" value="提交">
+    </form>
+</div>
+
+</body>
+</html>
