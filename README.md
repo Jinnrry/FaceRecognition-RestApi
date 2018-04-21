@@ -51,7 +51,20 @@ sudo pip3 install sklearn
 sudo apt-get install libopencv-dev python3-opencv
 sudo apt-get install caffe-cpu
 ```
-* 如使用GPU请安装GPU版Caffe，CUDA须用apt安装
+
+* 如需要使用GPU（运行更快，但并非所有电脑都能支持）请安装GPU版Caffe，CUDA须用apt安装
+```Bash
+sudo apt-get install python3 pip3
+sudo pip3 install django
+sudo pip3 install sklearn
+sudo apt-get install libopencv-dev python3-opencv
+sudo apt-get install nvidia-cuda-toolkit
+sudo apt-get install caffe-cuda
+```
+
+
+
+
 
 进入RestServer/config文件夹，打开config.py文件，修改成你本机的路径，然后在RestServer目录下运行python3 manage.py runserver 没有报错即可
 
