@@ -10,14 +10,10 @@ sys.path.insert(0, caffe_root + 'python')
 import time
 from django.http import HttpResponse
 import caffe
-import matplotlib.pyplot as plt
 # GPU加速
 caffe.set_device(0)
 caffe.set_mode_gpu()
 
-plt.rcParams['figure.figsize'] = (10, 10)
-plt.rcParams['image.interpolation'] = 'nearest'
-plt.rcParams['image.cmap'] = 'gray'
 
 
 #加载均值文件
@@ -28,21 +24,28 @@ mean  = caffe.io.blobproto_to_array(a)[0]
 
 
 #加载性别检测神经网络
-gender_net_pretrained=root+'model/gender_net.caffemodel'
-gender_net_model_file=root+'model/deploy_gender.prototxt'
-gender_net = caffe.Classifier(gender_net_model_file, gender_net_pretrained,
-                       mean=mean,
-                       channel_swap=(2,1,0),
-                       raw_scale=255,
-                       image_dims=(256, 256))
+gender_net_model_file=root+'model/gender_net.caffemodel'
+gender_net_pretrained=root+'model/deploy_gender.prototxt'
+net = caffe.Net(gender_net_pretrained,gender_net_model_file,caffe.TEST)
+
+
+# 图像预处理
+transformer = caffe.io.Transformer({'data': net.blobs['data'].data.shape})
+transformer.set_transpose('data', (2,0,1))
+transformer.set_mean('data', mean)
+transformer.set_raw_scale('data', 255)
+transformer.set_channel_swap('data', (2,1,0))
+
 
 gender_list=['Male','Female']
 
 def getGender(img):
     input_image = caffe.io.load_image(img)
-    print (input_image)
-    prediction = gender_net.predict([input_image])
-    return gender_list[prediction[0].argmax()]
+    net.blobs['data'].data[...] = transformer.preprocess('data', input_image)
+    out = net.forward()
+    out_prob = out['prob'][0]
+    index = out_prob.argmax()
+    return gender_list[index]
 
 
 # 保存上传文件
