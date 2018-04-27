@@ -20,9 +20,16 @@ caffe.set_mode_gpu()
 
 # 加载caffe模型
 global net
-net = caffe.Net(root + 'model/vgg/deploy.prototxt'
+try:
+
+    net = caffe.Net(root + 'model/vgg/deploy.prototxt'
                        , root + 'model/vgg/VGG_FACE.caffemodel'
                        , caffe.TEST)
+except:
+    print("请先下载VGG FACE神经网络模型，详情请看model/vgg/README.md")
+    exit();
+
+
 # 提取特征数组
 def get_feature(path1):
     global net
@@ -92,6 +99,7 @@ def compared(request):
 
 #获取图片中人脸的位置
 def detectFaces(image_name):
+    starttime=time.time()
     img = cv2.imread(image_name)
     face_cascade = cv2.CascadeClassifier(root+"model/haarcascade_frontalface_default.xml")
     if img.ndim == 3:
@@ -105,8 +113,11 @@ def detectFaces(image_name):
     for (x,y,width,height) in faces:
         result+=  '{ "x":'+ str(x) +' ,"y":'+ str(y) +' ,"height":'+ str(height)+',"width":'+ str(width)+' } ' +','
 
-    result=result[:-1]+']';
-    return result
+    endtime=time.time()
+
+    result=result[:-1]+']'
+
+    return '{"status":true, "data":'+ result +' ,"msg":"成功","runtime":'+ str(endtime-starttime)+'}'
 
 #api返回函数
 def locate(request):

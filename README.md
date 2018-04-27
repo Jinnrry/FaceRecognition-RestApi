@@ -104,7 +104,12 @@ Other：
 	</td>
 	</tr>
 	<tr>
-	<td>http://你的ip/locate  </td> <td> POST</td> <td>pic 数据为你需要定位人脸的图片 </td>  <td>人脸定位接口地址</td>
+	<td>http://你的ip/locate  </td> <td> POST</td> <td>使用opencv进行人脸定位，速度快，效果略差，pic 数据为你需要定位人脸的图片 </td>  <td>人脸定位接口地址</td>
+	 <td > JSON数组，返回中每有一个数组就表示检测到一张人脸 X，Y表示人脸左上角坐标，height width表示高度和宽度
+	</td>
+	</tr>
+		<tr>
+	<td>http://你的ip/locateMtcnn</td> <td> POST</td> <td>使用mtcnn进行人脸定位，速度慢，效果好一点，pic 数据为你需要定位人脸的图片 </td>  <td>人脸定位接口地址</td>
 	 <td > JSON数组，返回中每有一个数组就表示检测到一张人脸 X，Y表示人脸左上角坐标，height width表示高度和宽度
 	</td>
 	</tr>
@@ -132,9 +137,9 @@ Other：
 
 ### 其他说明：
 
-关于算法，人脸定位算法来自[openCv2](https://opencv.org/);性别和年龄检测来自 [Age and Gender Classification using Convolutional Neural Networks](https://www.openu.ac.il/home/hassner/projects/cnn_agegender/);人脸相识度对比来自[VGG FACE](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/)
+关于算法，人脸定位算法来自[openCv2](https://opencv.org/) ,以及[MTCNN](https://kpzhang93.github.io/MTCNN_face_detection_alignment/index.html?from=timeline&isappinstalled=1) ;性别和年龄检测来自 [Age and Gender Classification using Convolutional Neural Networks](https://www.openu.ac.il/home/hassner/projects/cnn_agegender/);人脸相识度对比来自[VGG FACE](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/)
 
 
 ### 最后！！
 
-欢迎提出意见，如果改进优化了这个项目请也提交我一份代码，邮箱地址 ok@xjiangwei.cn
+欢迎提出意见，如果改进优化了这个项目请也pull一份过来^_^

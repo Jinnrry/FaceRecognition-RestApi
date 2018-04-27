@@ -17,12 +17,22 @@
 </div>
 
 <div>
-    人脸定位：
+    人脸定位 opencv（速度快，精度低）：
     <form action="http://127.0.0.1:8000/locate" method="post"  enctype="multipart/form-data" >
     图片:<input type="file" name="pic"><br>
     <input type="submit" value="提交">
     </form>
 </div>
+
+
+<div>
+    人脸定位 mtcnn（速度慢，精度高）：
+    <form action="http://127.0.0.1:8000/locateMtcnn" method="post"  enctype="multipart/form-data" >
+    图片:<input type="file" name="pic"><br>
+    <input type="submit" value="提交">
+    </form>
+</div>
+
 
 <div>
     性别检测：

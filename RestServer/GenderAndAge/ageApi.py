@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import random
 import sys
-
 import os
 from config import config
 root=config.Config.root
