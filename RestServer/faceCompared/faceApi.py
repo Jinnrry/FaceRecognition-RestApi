@@ -13,7 +13,6 @@ import sklearn.metrics.pairwise as pw
 import time
 import cv2
 from django.http import HttpResponse
-
 # GPU加速
 caffe.set_device(0)
 caffe.set_mode_gpu()
@@ -92,10 +91,40 @@ def compared(request):
         os.remove(root + "RestServer/upload/" + str(name2))
         endtime = time.time()
         Runtime=endtime-starttime
-        return HttpResponse('{"status":true,"data":"' + str(comparedValue) + '","msg":"成功","runtime": '+ str(Runtime) +'"  }')
+        return HttpResponse('{"status":true,"data":"' + str(comparedValue) + '","msg":"成功","runtime": ' + str(Runtime) + '  }')
     else:
         return HttpResponse('{"status":false,"data":"","msg":"请求不合法"}')
     return HttpResponse('{"status":false,"data":"","msg":"未知错误"}')
+
+def comparedByFaceID(request):
+    if request.method=='POST':
+        if request.POST['faceID1']  and request.POST['faceID2'] :
+            tz1=request.POST['faceID1'][2:-2]
+            tz2=request.POST['faceID2'][2:-2]
+            tz1=[tz1.split(",")]
+            tz2=[tz2.split(",")]
+            faceID1=np.float64(tz1)
+            faceID2=np.float64(tz2)
+            com=pw.cosine_similarity(faceID1, faceID2)[0][0]
+            return HttpResponse('{"status":true,"data":'+str(com)+',"msg":"成功！"}')
+    return HttpResponse('{"status":false,"data":"","msg":"失败！"}')
+
+def faceid(request):
+    if request.method == 'POST':
+        if len(request.FILES) != 1:
+            return HttpResponse('{"status":false,"data":"","msg":"图片参数错误！"}')
+        starttime = time.time()
+        name = str(random.randint(10000, 99999)) + str(time.time())  # 随机名字
+        handle_uploaded_file(request.FILES['pic'], str(name))
+        tz = get_feature(root + "RestServer/upload/" + str(name))
+        endtime = time.time()
+        Runtime=endtime-starttime
+        return HttpResponse('{"status":true,"data":' + str(tz.tolist()) + ',"msg":"成功","runtime": '+ str(Runtime) +'  }')
+    else:
+        return HttpResponse('{"status":false,"data":"","msg":"请求不合法"}')
+    return HttpResponse('{"status":false,"data":"","msg":"未知错误"}')
+
+
 
 #获取图片中人脸的位置
 def detectFaces(image_name):

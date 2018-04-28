@@ -20,10 +20,12 @@ from GenderAndAge import ageApi
 from faceLocation import faceLocation
 
 urlpatterns = [
+    url('comparedByFaceID', faceApi.comparedByFaceID),
     url('compared', faceApi.compared),
     url('locateMtcnn', faceLocation.getLocate),
     url('locate', faceApi.locate),
     url('gender', genderApi.gender),
     url('age', ageApi.age),
+    url('faceid',faceApi.faceid)
 
 ]

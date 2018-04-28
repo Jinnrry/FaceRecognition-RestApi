@@ -128,6 +128,17 @@ Other：
 			<td > JSON数组，status调用是否成功，data 为一个年龄区间 ，runtime为识别执行时间
 	</td>
 	</tr>
+		</tr>
+	<tr>
+		<td>http://你的ip/faceid</td><td>POST</td><td>pic 数据为你需要检测的人脸图片</td><td>获取face id</td>
+			<td > JSON数组，status调用是否成功，data 为一个4096长度的矩阵（我知道这个长度很反人类，所以大哥您有什么算法压缩吗），2个face id求余弦值即可获得2个人脸的相似度 
+	</td>
+	</tr>
+		<tr>
+		<td>http://你的ip/comparedByFaceID</td><td>POST</td><td>faceID1,faceID2，2个需要对比的face id</td><td>通过face id对比人脸相似度（即求2个face id的余弦值）</td>
+			<td > JSON数组，status调用是否成功，data为百分数，大约78%以上即可判断为同一个人 
+	</td>
+	</tr>
 	<tr>
 		<td>http://你的ip/expression</td><td colspan="4">表情检测，功能待实现。。。</td>
 	</tr>
