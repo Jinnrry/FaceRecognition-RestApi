@@ -76,8 +76,13 @@ Windows:
 前提是你已经装好python3和pip
 
 ```Bash
-sudo pip3 install django
-sudo pip3 install sklearn
+pip3 install django
+pip3 install sklearn
+pip3 install scikit-image
+pip3 install opencv-python
+pip3 install scipy
+pip3 install matplotlib
+pip3 install protobuf
 ```
 
 去[caffe windows](https://github.com/BVLC/caffe/tree/windows)下载编译好的（你自己编译当然没问题）Windows caffe二进制文件，
