@@ -72,7 +72,7 @@ def gender(request):
         os.remove(root + "RestServer/upload/" + str(name1))
         endtime = time.time()
         Runtime = endtime - starttime
-        return HttpResponse('{"status":true,"data":"' + gender + '","msg":"成功","runtime": ' + str(Runtime) + '"  }')
+        return HttpResponse('{"status":true,"data":"' + gender + '","msg":"成功","runtime": ' + str(Runtime) + '  }')
     else:
         return HttpResponse('{"status":false,"data":"","msg":"请求不合法"}')
     return HttpResponse('{"status":false,"data":"","msg":"未知错误"}')

@@ -576,4 +576,4 @@ def getLocate(request):
         handle_uploaded_file(request.FILES['pic'], str(name))
         returnData = HttpResponse( str( locate(root + "RestServer/upload/" + name)))
         os.remove(root + "RestServer/upload/" + str(name))
-        return returnData
+        return  HttpResponse( returnData )
